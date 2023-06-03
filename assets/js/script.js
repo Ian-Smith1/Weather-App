@@ -114,7 +114,8 @@ function getWeather(city) {
                 fiveDayArray.push(forcastDay);
               }
               for (var i = 0; i < fiveDayArray.length; i++) {
-                var cardDiv = $("<div>").addClass("card-body");
+                var cardDiv = $("<div>").addClass("col3");
+                var cardBody = $("<div>").addClass("card-body")
                 var cardTitle = $("<h3>")
                   .addClass("card-title")
                   .text(fiveDayArray);
@@ -122,13 +123,55 @@ function getWeather(city) {
                   "Temp: " + weatherData.current.temp + " °F",
                   "Wind: " + weatherData.current.wind_speed + " MPH",
                   "Humidity: " + weatherData.current.humidity + "%",
-                  "UV Index: " + weatherData.current.uvi,
-                ];
+                  "UV Index: " + weatherData.current.uvi,]
+                  var temp = $("<p>")
+                    .addClass("card-text")
+                    .text("Temp: " + weatherData.daily[i].temp.max)
+                  var wind = $("<p>")
+                    .addClass("card-text")
+                    .text("Wind: " + weatherData.daily[i].wind_speed + "MPH")
+                  var humidity = $("<p>")
+                    .addClass("card-text")
+                    .text("Humidity: " + weatherData.daily[i].humidity + "%")
+                  fiveDayEl.append(cardDiv);
+                  cardDiv.append(cardBody);
+                  cardBody.append(cardTitle);
+                  cardBody.append(temp);
+                  cardBody.append(wind);
+                  cardBody.append(humidity);
               }
-            });
+            })
           }
-        });
+        })
       });
-    }
-  });
+    } else {
+        alert("Error, could not find city")
+      } 
+    })
+      .catch(fucntion (error)) ;{
+        alert("Unable to connect to Open Weather");
+  };
 }
+
+function sumbitCitySearch(e)
+  e.preventDefault();
+  var city = searchedCity(cityInputEl.val().trim());
+  if (searchHistoryArray.searchedCity.includes(city)) {
+    alert(city + " is already in history.");
+  } else if (city) {
+      getWeather(city);
+      searchHistory(city);
+      searchHistoryArray.searchedCity.push(city);
+      saveSearchHistory();
+      cityInputEl.val(" ");
+  } else {
+      alert("Please enter valid city")
+  }
+
+  userSearch.on("submit", sumbitCitySearch);
+
+  $("#searchBtn").on("click", function () {
+    $("#currentWeather").remove();
+    $("#fiveDay").empty();
+    $("#fiveDayHeader").remove();
+  })
