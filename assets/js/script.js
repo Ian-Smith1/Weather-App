@@ -69,7 +69,6 @@ function getWeather(city) {
                 });
                 var currentWeatherHeader = $("<h2>").text(city + currentDay);
                 var currentWeatherList = $("<ul>");
-
                 var currentWeatherDetails = [
                   "Temp: " + weatherData.current.temp + " °F",
                   "Wind: " + weatherData.current.wind_speed + " MPH",
@@ -102,10 +101,6 @@ function getWeather(city) {
                 $("#fiveDay").before(currentWeather);
                 currentWeather.append(currentWeatherHeader);
                 currentWeather.append(currentWeatherList);
-
-                var fiveDayHeader = $("<h2>").text("5 Day Forcast:").attr({
-                  id: "five-day-header",
-                });
 
                 var fiveDayArray = [];
                 for (var i = 0; i < 5; i++) {
@@ -177,5 +172,4 @@ userSearch.on("submit", sumbitCitySearch);
 $("#searchBtn").on("click", function () {
   $("#currentWeather").remove();
   $("#fiveDay").empty();
-  $("#fiveDayHeader").remove();
 });
