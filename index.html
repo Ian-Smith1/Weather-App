@@ -1,36 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/css/style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./assets/css/style.css" />
     <title>Weather App</title>
-</head>
-<body>
-    <header class="header"> Weather Dash</header>
-    <main id="container" class="container"> 
-        <div class="row">
-            <div class="column1">
-                <div id="searchSection">
-                    <h1 class="header1">Search City Here</h1>
-                    <!-- <form id="searchBox"> -->
-                        <input name="city" type="text" placeholder="Denver" id="city" class="cityInput"/>
-                        <button type="search" id="searchBtn" class="btn">Search</button>
-                    <!-- </form> -->
-                    <hr>
-                    </hr>
-                    <div id="searchHistory"></div>
-                </div>           
-            </div>
-            <div class="column2">
-                <div id="fiveDay" class="row spacebetween"></div>
-            </div>
+  </head>
+  <body>
+    <header class="header">Weather Dash</header>
+    <main id="container" class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <div id="searchSection">
+            <h1 class="header1">Search City Here</h1>
+            <input
+              name="city"
+              type="text"
+              placeholder="Denver"
+              id="city"
+              class="cityInput"
+            />
+            <button type="search" id="searchBtn" class="btn">Search</button>
+            <div id="searchHistory"></div>
+          </div>
         </div>
+        <div class="col-md-9">
+          <div id="daily"></div>
+          <div id="fiveDay" class="pt-5"></div>
+        </div>
+      </div>
     </main>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+      crossorigin="anonymous"
+    ></script>
     <script src="./assets/js/script.js"></script>
-</body>
+  </body>
 </html>

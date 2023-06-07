@@ -6,6 +6,7 @@ var userSearch = $("#searchBox");
 var column2El = $(".column2");
 var cityInputEl = $("#city");
 var fiveDayEl = $("#fiveDay");
+var dailyEl = $("#daily");
 var searchHistory = $("#searchHistory");
 var presentDay = moment().format("M/DD/YYYY");
 var searchHistoryArray = loadSearchHistory();
@@ -63,9 +64,9 @@ function getWeather(city) {
     .catch(function (error) {
       console.log(error);
     });
-  {
-    alert("Cannot connect to Open Weather");
-  }
+  // {
+  //   alert("Cannot connect to Open Weather");
+  // }
 }
 function getDailyForcast(cityLat, cityLong) {
   var url =
@@ -83,22 +84,6 @@ function getDailyForcast(cityLat, cityLong) {
     })
     .then(function (weatherData) {
       console.log(weatherData);
-      var currentWeather = $("<div>").attr({
-        id: "currentWeather",
-      });
-      var currentWeatherHeader = $("<h2>").text(city);
-      var currentWeatherList = $("<ul>");
-      var currentWeatherDetails = [
-        "Temp: " + weatherData.main.temp + " °F",
-        "Wind: " + weatherData.wind.speed + " MPH",
-        "Humidity: " + weatherData.main.humidity + "%",
-      ];
-      for (var i = 0; i < currentWeatherDetails.length; i++) {
-        var currentWeatherItem = $("<li>").text(currentWeatherDetails[i]);
-        currentWeatherList.append(currentWeatherItem);
-      }
-      currentWeather.append(currentWeatherHeader);
-      currentWeather.append(currentWeatherList);
     });
 }
 
